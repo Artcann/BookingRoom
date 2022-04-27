@@ -16,7 +16,7 @@ import java.util.Objects;
 @AllArgsConstructor
 public class Userdata {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
     private String username;
