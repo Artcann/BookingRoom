@@ -4,7 +4,7 @@ on:
   push:
     # Publish `master` as Docker `latest` image.
     branches:
-      - master
+      - main
       - V3.0.0
 
     # Publish `v1.2.3` tags as releases.
