@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7a4b034-d174-440b-924c-dbc9ef9213e5" name="Changes" comment="Update primary key generation for postgres">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Userdata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Userdata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +106,7 @@
       <option name="presentableId" value="Default" />
       <updated>1650898564391</updated>
       <workItem from="1650898565774" duration="4096000" />
-      <workItem from="1651073786849" duration="4057000" />
+      <workItem from="1651073786849" duration="4232000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1650901411467</created>
@@ -152,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651077592281</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Update primary key generation for postgres">
+      <created>1651077888628</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1651077888628</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
