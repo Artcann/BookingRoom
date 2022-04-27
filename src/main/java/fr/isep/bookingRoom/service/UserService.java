@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import fr.isep.bookingRoom.domain.Role;
-import fr.isep.bookingRoom.domain.User;
+import fr.isep.bookingRoom.domain.Userdata;
 import fr.isep.bookingRoom.port.UserServicePort;
 import fr.isep.bookingRoom.repository.RoleRepository;
 import fr.isep.bookingRoom.repository.UserRepository;
@@ -31,7 +31,7 @@ public class UserService implements UserServicePort, UserDetailsService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public User saveUser(User user) {
+    public Userdata saveUser(Userdata user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
@@ -43,25 +43,25 @@ public class UserService implements UserServicePort, UserDetailsService {
 
     @Override
     public void addRoleToUser(String username, String roleName) {
-        User user = userRepository.findByUsername(username);
+        Userdata user = userRepository.findByUsername(username);
         Role role = roleRepository.findByName(roleName);
         //Verifier que le role n'est pas déjà attribué
         user.getRoles().add(role);
     }
 
     @Override
-    public User getUser(String username) {
+    public Userdata getUser(String username) {
         return userRepository.findByUsername(username);
     }
 
     @Override
-    public List<User> getUsers() {
+    public List<Userdata> getUsers() {
         return userRepository.findAll();
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
+        Userdata user = userRepository.findByUsername(username);
         if(null == user) {
             log.error("User not found in the database");
             throw new UsernameNotFoundException("User not found in the database");

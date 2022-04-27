@@ -14,8 +14,7 @@ import java.util.Objects;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="`user`")
-public class User {
+public class Userdata {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -30,7 +29,7 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        User user = (User) o;
+        Userdata user = (Userdata) o;
         return id != null && Objects.equals(id, user.id);
     }
 

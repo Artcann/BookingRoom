@@ -6,7 +6,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.isep.bookingRoom.domain.Role;
-import fr.isep.bookingRoom.domain.User;
+import fr.isep.bookingRoom.domain.Userdata;
 import fr.isep.bookingRoom.service.UserService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -37,12 +37,12 @@ public class UserController {
     private String jwtSecret;
 
     @GetMapping("/users")
-    public ResponseEntity<List<User>> getUser() {
+    public ResponseEntity<List<Userdata>> getUser() {
         return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
     }
 
     @PostMapping("/user/save")
-    public ResponseEntity<User> saveUser(@RequestBody User user) {
+    public ResponseEntity<Userdata> saveUser(@RequestBody Userdata user) {
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
     }
 
@@ -68,7 +68,7 @@ public class UserController {
                 JWTVerifier verifier = JWT.require(algorithm).build();
                 DecodedJWT decodedJWT = verifier.verify(refreshToken);
                 String username = decodedJWT.getSubject();
-                User user = userService.getUser(username);
+                Userdata user = userService.getUser(username);
 
                 String accessToken = JWT.create()
                         .withSubject(user.getUsername())
