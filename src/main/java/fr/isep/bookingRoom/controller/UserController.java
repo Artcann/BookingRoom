@@ -29,19 +29,19 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/user")
 @Slf4j
 public class UserController {
     private final UserService userService;
     @Value("${security.authentication.jwt.secret}")
     private String jwtSecret;
 
-    @GetMapping("/users")
+    @GetMapping("/all")
     public ResponseEntity<List<Userdata>> getUser() {
         return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
     }
 
-    @PostMapping("/user/save")
+    @PostMapping("/save")
     public ResponseEntity<Userdata> saveUser(@RequestBody Userdata user) {
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
     }
@@ -98,6 +98,7 @@ public class UserController {
         }
     }
 }
+//TODO Transformer en DTO
 
 @Data
 class RoleToUserForm {
