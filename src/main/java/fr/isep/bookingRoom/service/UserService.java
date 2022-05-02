@@ -43,7 +43,7 @@ public class UserService implements UserServicePort, UserDetailsService {
 
     @Override
     public void addRoleToUser(String username, String roleName) {
-        Userdata user = userRepository.findByUsername(username);
+        Userdata user = userRepository.findByEmail(username);
         Role role = roleRepository.findByName(roleName);
         //Verifier que le role n'est pas déjà attribué
         user.getRoles().add(role);
@@ -51,7 +51,7 @@ public class UserService implements UserServicePort, UserDetailsService {
 
     @Override
     public Userdata getUser(String username) {
-        return userRepository.findByUsername(username);
+        return userRepository.findByEmail(username);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class UserService implements UserServicePort, UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Userdata user = userRepository.findByUsername(username);
+        Userdata user = userRepository.findByEmail(username);
         if(null == user) {
             log.error("User not found in the database");
             throw new UsernameNotFoundException("User not found in the database");
@@ -72,6 +72,6 @@ public class UserService implements UserServicePort, UserDetailsService {
         user.getRoles().forEach(role -> {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         });
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
     }
 }
