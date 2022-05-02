@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7a4b034-d174-440b-924c-dbc9ef9213e5" name="Changes" comment="Adding ical4j to dependencies&#10;&#10;Creating CalendariCalAdapter in adapter package&#10;    getCalendar();&#10;    outCalendar(Calendar); (temporary for dev)&#10;&#10;Creating CalendarAdapterPort in port package">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/adapter/CalendariCalAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/port/CalendarAdapterPort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/CalendarController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/port/CalendarServicePort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/service/CalendarService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ical4j.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/BookingRoomApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/BookingRoomApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/adapter/CalendariCalAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/adapter/CalendariCalAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/port/CalendarAdapterPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/port/CalendarAdapterPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +84,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Dev\BookingRoom\src\main\resources\static" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="fr.isep.bookingRoom.port" />
+    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.BookingRoomApplication (1)">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -131,7 +138,7 @@
       <workItem from="1651073786849" duration="6503000" />
       <workItem from="1651228396352" duration="7013000" />
       <workItem from="1651491385363" duration="1438000" />
-      <workItem from="1651493234264" duration="6731000" />
+      <workItem from="1651493234264" duration="16826000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1650901411467</created>
@@ -196,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651231612211</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Adding ical4j to dependencies&#10;&#10;Creating CalendariCalAdapter in adapter package&#10;    getCalendar();&#10;    outCalendar(Calendar); (temporary for dev)&#10;&#10;Creating CalendarAdapterPort in port package">
+      <created>1651500024209</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1651500024209</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,7 +221,39 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Constant" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="Constant" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/Constant" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>

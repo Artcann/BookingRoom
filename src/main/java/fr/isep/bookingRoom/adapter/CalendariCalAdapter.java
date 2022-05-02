@@ -9,12 +9,14 @@ import net.fortuna.ical4j.model.Calendar;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.text.MessageFormat;
 
 
 public class CalendariCalAdapter implements CalendarAdapterPort {
 
-    public Calendar getCalendar() throws IOException, ParserException {
-        InputStream is = new URL("https://planning-2122.isep.fr/Telechargements/ical/Edt_CROCHET.ics?version=2020.0.6.2&idICal=17DF63E465B97ABFE2FEA9328460A8AC&param=643d5b312e2e36325d2666683d3126663d31").openStream();
+    public Calendar getIcsCalendar(String label, String URLid) throws IOException, ParserException {
+        String url = MessageFormat.format("https://planning.isep.fr/Telechargements/ical/EdT_{0}.ics?version=13.0.2.1&idICal={1}&param=643d5b312e2e36325d2666683d3126663d31", label, URLid);
+        InputStream is = new URL(url).openStream();
         Calendar calendar;
         try {
             calendar = new CalendarBuilder().build(is);
