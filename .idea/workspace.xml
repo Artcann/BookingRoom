@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7a4b034-d174-440b-924c-dbc9ef9213e5" name="Changes" comment="Adding Swagger">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/EventController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Event.java" afterDir="false" />
+    <list default="true" id="d7a4b034-d174-440b-924c-dbc9ef9213e5" name="Changes" comment="Adding ical4j to dependencies&#10;&#10;Creating CalendariCalAdapter in adapter package&#10;    getCalendar();&#10;    outCalendar(Calendar); (temporary for dev)&#10;&#10;Creating CalendarAdapterPort in port package">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/adapter/CalendariCalAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/port/CalendarAdapterPort.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/BookingRoomApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/BookingRoomApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,11 +19,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JpbToolWindowState">
@@ -53,29 +59,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Dev/BookingRoom/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "spring.configuration.checksum": "47fe7cefa9761f76d87f6e4ea4c6a581"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="show.run.dashboard.notification" value="false" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Dev\BookingRoom\src\main\resources" />
@@ -86,15 +82,26 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.BookingRoomApplication (1)">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BookingRoomApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="BookingRoom" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="fr.isep.bookingRoom.BookingRoomApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="fr.isep.bookingRoom.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="fr.isep.bookingRoom.BookingRoomApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -123,6 +130,8 @@
       <workItem from="1650898565774" duration="4096000" />
       <workItem from="1651073786849" duration="6503000" />
       <workItem from="1651228396352" duration="7013000" />
+      <workItem from="1651491385363" duration="1438000" />
+      <workItem from="1651493234264" duration="6731000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1650901411467</created>
@@ -203,6 +212,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
@@ -212,6 +222,7 @@
     <MESSAGE value="Update primary key generation for postgres" />
     <MESSAGE value="Update port for Docker" />
     <MESSAGE value="Adding Swagger" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Swagger" />
+    <MESSAGE value="Adding ical4j to dependencies&#10;&#10;Creating CalendariCalAdapter in adapter package&#10;    getCalendar();&#10;    outCalendar(Calendar); (temporary for dev)&#10;&#10;Creating CalendarAdapterPort in port package" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding ical4j to dependencies&#10;&#10;Creating CalendariCalAdapter in adapter package&#10;    getCalendar();&#10;    outCalendar(Calendar); (temporary for dev)&#10;&#10;Creating CalendarAdapterPort in port package" />
   </component>
 </project>
