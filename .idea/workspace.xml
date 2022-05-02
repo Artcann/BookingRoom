@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7a4b034-d174-440b-924c-dbc9ef9213e5" name="Changes" comment="Adding Swagger">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/EventController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Event.java" afterDir="false" />
+    <list default="true" id="d7a4b034-d174-440b-924c-dbc9ef9213e5" name="Changes" comment="Adding Event Controller and Entities">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Room.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/enums/EventStatusEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/enums/RoomCampusEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/enums/RoomTypeEnum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/BookingRoomApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/BookingRoomApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Userdata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Userdata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,6 +27,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -69,10 +77,11 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "MavenSettings",
+    "show.run.dashboard.notification": "false",
     "spring.configuration.checksum": "47fe7cefa9761f76d87f6e4ea4c6a581"
   }
 }]]></component>
@@ -123,6 +132,9 @@
       <workItem from="1650898565774" duration="4096000" />
       <workItem from="1651073786849" duration="6503000" />
       <workItem from="1651228396352" duration="7013000" />
+      <workItem from="1651401608493" duration="795000" />
+      <workItem from="1651482271342" duration="22000" />
+      <workItem from="1651491365438" duration="7630000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1650901411467</created>
@@ -187,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651231612211</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Adding Event Controller and Entities">
+      <created>1651401826920</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1651401826920</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +231,7 @@
     <MESSAGE value="Update primary key generation for postgres" />
     <MESSAGE value="Update port for Docker" />
     <MESSAGE value="Adding Swagger" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Swagger" />
+    <MESSAGE value="Adding Event Controller and Entities" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Event Controller and Entities" />
   </component>
 </project>
