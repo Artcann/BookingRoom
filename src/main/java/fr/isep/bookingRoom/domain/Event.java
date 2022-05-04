@@ -5,8 +5,8 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.Objects;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Entity
 @Getter
@@ -18,10 +18,14 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private LocalDate starting_date;
-    private LocalDate ending_date;
+    private LocalDateTime starting_date;
+    private LocalDateTime ending_date;
     private String name;
     private String description;
+    private String type;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private Collection<Room> room = new HashSet<>();
 
     @Enumerated(EnumType.STRING)
     private EventStatusEnum status;

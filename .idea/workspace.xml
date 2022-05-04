@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7a4b034-d174-440b-924c-dbc9ef9213e5" name="Changes" comment="Adding ical4j to dependencies&#10;&#10;Creating CalendariCalAdapter in adapter package&#10;    getCalendar();&#10;    outCalendar(Calendar); (temporary for dev)&#10;&#10;Creating CalendarAdapterPort in port package">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/CalendarController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/port/CalendarServicePort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/service/CalendarService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ical4j.properties" afterDir="false" />
+    <list default="true" id="d7a4b034-d174-440b-924c-dbc9ef9213e5" name="Changes" comment="Adding test script to BookingRoomApplication&#10;&#10;Adding the getWeek function to CalendarService&#10;    This function return the weekly events from hyperplanning and database&#10;&#10;Adjusting Event Object by changing format of start an end, adding a Collection&lt;Room&gt; &#10;&#10;Creating EventRepository that allows us to search events located in a certain room using only the room label as filter&#10;&#10;Adding a status hyperplanning in the EventStatusEnum to dissociate hyperplanning and database events&#10;&#10;Creating Week.java a POJO to better use a list of events&#10;&#10;##################### NOTE ######################&#10;For the database events to work correctly I needed to change the format of starting_date and ending_date from date to timestamp without timezone in pgagent">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Week.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/repository/EventRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/BookingRoomApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/BookingRoomApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/adapter/CalendariCalAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/adapter/CalendariCalAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/port/CalendarAdapterPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/port/CalendarAdapterPort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/enums/EventStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/enums/EventStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/service/CalendarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/service/CalendarService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +33,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -85,17 +91,20 @@
       <recent name="D:\Dev\BookingRoom\src\main\resources\static" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="fr.isep.bookingRoom.repository" />
       <recent name="fr.isep.bookingRoom.port" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.BookingRoomApplication (1)">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -139,6 +148,9 @@
       <workItem from="1651228396352" duration="7013000" />
       <workItem from="1651491385363" duration="1438000" />
       <workItem from="1651493234264" duration="16826000" />
+      <workItem from="1651590515311" duration="3568000" />
+      <workItem from="1651651322608" duration="12961000" />
+      <workItem from="1651677049792" duration="13454000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1650901411467</created>
@@ -269,6 +281,7 @@
     <MESSAGE value="Update port for Docker" />
     <MESSAGE value="Adding Swagger" />
     <MESSAGE value="Adding ical4j to dependencies&#10;&#10;Creating CalendariCalAdapter in adapter package&#10;    getCalendar();&#10;    outCalendar(Calendar); (temporary for dev)&#10;&#10;Creating CalendarAdapterPort in port package" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding ical4j to dependencies&#10;&#10;Creating CalendariCalAdapter in adapter package&#10;    getCalendar();&#10;    outCalendar(Calendar); (temporary for dev)&#10;&#10;Creating CalendarAdapterPort in port package" />
+    <MESSAGE value="Adding test script to BookingRoomApplication&#10;&#10;Adding the getWeek function to CalendarService&#10;    This function return the weekly events from hyperplanning and database&#10;&#10;Adjusting Event Object by changing format of start an end, adding a Collection&lt;Room&gt; &#10;&#10;Creating EventRepository that allows us to search events located in a certain room using only the room label as filter&#10;&#10;Adding a status hyperplanning in the EventStatusEnum to dissociate hyperplanning and database events&#10;&#10;Creating Week.java a POJO to better use a list of events&#10;&#10;##################### NOTE ######################&#10;For the database events to work correctly I needed to change the format of starting_date and ending_date from date to timestamp without timezone in pgagent" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding test script to BookingRoomApplication&#10;&#10;Adding the getWeek function to CalendarService&#10;    This function return the weekly events from hyperplanning and database&#10;&#10;Adjusting Event Object by changing format of start an end, adding a Collection&lt;Room&gt; &#10;&#10;Creating EventRepository that allows us to search events located in a certain room using only the room label as filter&#10;&#10;Adding a status hyperplanning in the EventStatusEnum to dissociate hyperplanning and database events&#10;&#10;Creating Week.java a POJO to better use a list of events&#10;&#10;##################### NOTE ######################&#10;For the database events to work correctly I needed to change the format of starting_date and ending_date from date to timestamp without timezone in pgagent" />
   </component>
 </project>
