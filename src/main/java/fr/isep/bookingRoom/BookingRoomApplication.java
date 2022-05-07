@@ -1,6 +1,7 @@
 
 package fr.isep.bookingRoom;
 
+import fr.isep.bookingRoom.domain.Event;
 import fr.isep.bookingRoom.service.CalendarService;
 import net.fortuna.ical4j.model.Calendar;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,12 @@ public class BookingRoomApplication {
 		return args -> {
 			Calendar calendar = calendarService.getCalendar("L012");
 			//calendarService.outCalendar(calendar);
-			System.out.println(calendarService.getWeek(calendar, "L012", LocalDateTime.of(2022,5,2,0,0)));
+			//System.out.println(calendarService.getWeek(calendar, "L012", LocalDateTime.of(2022,5,2,0,0)));
+			for ( Event event:
+			calendarService.getWeek(calendar, "L012", LocalDateTime.of(2022,5,2,0,0))) {
+				System.out.println("------------------");
+				System.out.println(event);
+			}
 		};
 	}
 }

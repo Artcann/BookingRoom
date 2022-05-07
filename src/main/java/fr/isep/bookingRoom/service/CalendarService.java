@@ -13,6 +13,7 @@ import net.fortuna.ical4j.data.ParserException;
 import net.fortuna.ical4j.model.Calendar;
 import net.fortuna.ical4j.model.Component;
 import org.springframework.stereotype.Service;
+
 import java.io.IOException;
 
 import java.time.LocalDate;
@@ -89,9 +90,8 @@ public class CalendarService implements CalendarServicePort {
                 weekEvents.add(eventTemp);
             }
         }
-
-        EventRepository.findByRoom_Label(roomLabel);
-
+        List<Event> eventFromDatabase = EventRepository.findByRoom_Label(roomLabel);
+        weekEvents.addAll(eventFromDatabase);
         return weekEvents;
     }
 
