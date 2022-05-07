@@ -19,32 +19,32 @@ public class RoomController {
         return new ResponseEntity<>(roomServicePort.getRoomPaging(), HttpStatus.OK);
     }
 
-    @GetMapping("/{eventId}")
+    @GetMapping("/{roomId}")
     public ResponseEntity<Room> getRoom(
-            @PathVariable(name = "eventId") String eventId
+            @PathVariable(name = "roomId") String roomId
     ) {
-        return new ResponseEntity<>(roomServicePort.getRoomById(eventId), HttpStatus.OK);
+        return new ResponseEntity<>(roomServicePort.getRoomById(roomId), HttpStatus.OK);
     }
 
     @PostMapping("/create")
     public ResponseEntity<Room> createRoom(
-            @RequestBody Room event
+            @RequestBody Room room
     ) {
-        return new ResponseEntity<>(roomServicePort.saveRoom(event), HttpStatus.CREATED);
+        return new ResponseEntity<>(roomServicePort.saveRoom(room), HttpStatus.CREATED);
     }
 
-    @PatchMapping("/update/{eventId}")
+    @PatchMapping("/update/{roomId}")
     public ResponseEntity<Room> updateRoom(
-            @PathVariable(name = "eventId") String eventId,
+            @PathVariable(name = "roomId") String roomId,
             @RequestBody Room event
     ) {
-        return new ResponseEntity<>(roomServicePort.updateRoom(eventId, event), HttpStatus.CREATED);
+        return new ResponseEntity<>(roomServicePort.updateRoom(roomId, event), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/delete/{eventId}")
+    @DeleteMapping("/delete/{roomId}")
     public void deleteRoom(
-            @PathVariable(name = "eventId") String eventId
+            @PathVariable(name = "roomId") String roomId
     ) {
-        this.roomServicePort.deleteRoom(eventId);
+        this.roomServicePort.deleteRoom(roomId);
     }
 }

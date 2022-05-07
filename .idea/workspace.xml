@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7a4b034-d174-440b-924c-dbc9ef9213e5" name="Changes" comment="Adding Room Entity and Repository">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/RoomController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/port/EventServicePort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/port/RoomServicePort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/repository/EventRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/EventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/UserController.java" afterDir="false" />
+    <list default="true" id="d7a4b034-d174-440b-924c-dbc9ef9213e5" name="Changes" comment="Adding Event and Room services">
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/RoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/RoomController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +130,7 @@
       <workItem from="1651687051622" duration="1510000" />
       <workItem from="1651828128472" duration="35000" />
       <workItem from="1651838863713" duration="1482000" />
-      <workItem from="1651950397077" duration="1825000" />
+      <workItem from="1651950397077" duration="2029000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1650901411467</created>
@@ -215,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651501185441</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Adding Event and Room services">
+      <created>1651952357391</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1651952357391</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,6 +243,7 @@
     <MESSAGE value="Adding Swagger" />
     <MESSAGE value="Adding Event Controller and Entities" />
     <MESSAGE value="Adding Room Entity and Repository" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Room Entity and Repository" />
+    <MESSAGE value="Adding Event and Room services" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Event and Room services" />
   </component>
 </project>
