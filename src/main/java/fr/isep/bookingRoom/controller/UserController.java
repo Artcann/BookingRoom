@@ -7,7 +7,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.isep.bookingRoom.domain.Role;
 import fr.isep.bookingRoom.domain.Userdata;
-import fr.isep.bookingRoom.service.UserService;
+import fr.isep.bookingRoom.port.UserServicePort;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,28 +32,28 @@ import java.util.stream.Collectors;
 @RequestMapping("/user")
 @Slf4j
 public class UserController {
-    private final UserService userService;
+    private final UserServicePort userServicePort;
     @Value("${security.authentication.jwt.secret}")
     private String jwtSecret;
 
     @GetMapping("/all")
     public ResponseEntity<List<Userdata>> getUser() {
-        return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
+        return new ResponseEntity<>(userServicePort.getUsers(), HttpStatus.OK);
     }
 
     @PostMapping("/save")
     public ResponseEntity<Userdata> saveUser(@RequestBody Userdata user) {
-        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
+        return new ResponseEntity<>(userServicePort.saveUser(user), HttpStatus.CREATED);
     }
 
     @PostMapping("/role/save")
     public ResponseEntity<Role> saveRole(@RequestBody Role role) {
-        return new ResponseEntity<>(userService.saveRole(role), HttpStatus.CREATED);
+        return new ResponseEntity<>(userServicePort.saveRole(role), HttpStatus.CREATED);
     }
 
     @PostMapping("/role/addtouser")
     public ResponseEntity<Void> saveRoleToUser(@RequestBody RoleToUserForm form) {
-        userService.addRoleToUser(form.getUsername(), form.getRolename());
+        userServicePort.addRoleToUser(form.getUsername(), form.getRolename());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -68,7 +68,7 @@ public class UserController {
                 JWTVerifier verifier = JWT.require(algorithm).build();
                 DecodedJWT decodedJWT = verifier.verify(refreshToken);
                 String username = decodedJWT.getSubject();
-                Userdata user = userService.getUser(username);
+                Userdata user = userServicePort.getUser(username);
 
                 String accessToken = JWT.create()
                         .withSubject(user.getEmail())
