@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7a4b034-d174-440b-924c-dbc9ef9213e5" name="Changes" comment="Adding Event and Room services">
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/RoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/controller/RoomController.java" afterDir="false" />
+    <list default="true" id="d7a4b034-d174-440b-924c-dbc9ef9213e5" name="Changes" comment="Change name variable">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/service/EventService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/service/RoomService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +133,7 @@
       <workItem from="1651687051622" duration="1510000" />
       <workItem from="1651828128472" duration="35000" />
       <workItem from="1651838863713" duration="1482000" />
-      <workItem from="1651950397077" duration="2029000" />
+      <workItem from="1651950397077" duration="3157000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1650901411467</created>
@@ -216,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651952357391</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Change name variable">
+      <created>1651952516067</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1651952516067</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +254,7 @@
     <MESSAGE value="Adding Event Controller and Entities" />
     <MESSAGE value="Adding Room Entity and Repository" />
     <MESSAGE value="Adding Event and Room services" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Event and Room services" />
+    <MESSAGE value="Change name variable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change name variable" />
   </component>
 </project>
