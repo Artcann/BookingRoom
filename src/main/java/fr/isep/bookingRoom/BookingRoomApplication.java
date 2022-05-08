@@ -19,10 +19,4 @@ public class BookingRoomApplication {
 	PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-
-	@Bean
-	CommandLineRunner run() {
-		return args -> {
-		};
-	}
 }

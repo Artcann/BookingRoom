@@ -18,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -36,21 +37,25 @@ public class UserController {
     @Value("${security.authentication.jwt.secret}")
     private String jwtSecret;
 
+    @RolesAllowed("ROLE_ADMIN")
     @GetMapping("/all")
     public ResponseEntity<List<Userdata>> getUser() {
         return new ResponseEntity<>(userServicePort.getUsers(), HttpStatus.OK);
     }
 
+    @RolesAllowed("ROLE_ADMIN")
     @PostMapping("/save")
     public ResponseEntity<Userdata> saveUser(@RequestBody Userdata user) {
         return new ResponseEntity<>(userServicePort.saveUser(user), HttpStatus.CREATED);
     }
 
+    @RolesAllowed("ROLE_ADMIN")
     @PostMapping("/role/save")
     public ResponseEntity<Role> saveRole(@RequestBody Role role) {
         return new ResponseEntity<>(userServicePort.saveRole(role), HttpStatus.CREATED);
     }
 
+    @RolesAllowed("ROLE_ADMIN")
     @PostMapping("/role/addtouser")
     public ResponseEntity<Void> saveRoleToUser(@RequestBody RoleToUserForm form) {
         userServicePort.addRoleToUser(form.getUsername(), form.getRolename());
