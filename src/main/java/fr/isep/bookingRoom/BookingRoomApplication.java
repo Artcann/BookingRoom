@@ -15,8 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class BookingRoomApplication {
-	@Autowired
-	private CalendarService calendarService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(BookingRoomApplication.class, args);
@@ -25,13 +23,5 @@ public class BookingRoomApplication {
 	@Bean
 	PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
-	}
-
-	@Bean
-	CommandLineRunner run() {
-		return args -> {
-			Calendar calendar = calendarService.getCalendar("L012");
-			calendarService.outCalendar(calendar);
-		};
 	}
 }
