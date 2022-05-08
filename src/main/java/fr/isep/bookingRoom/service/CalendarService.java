@@ -22,6 +22,7 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -32,16 +33,15 @@ public class CalendarService implements CalendarServicePort {
     private final RoomRepository RoomRepository;
     private final EventRepository EventRepository;
 
-
-    @Override
-    public Calendar getCalendar(String roomLabel) throws ParserException, IOException {
+    private Calendar getCalendar(String roomLabel) throws ParserException, IOException {
         Room room = RoomRepository.findByLabel(roomLabel);
         String URLid = room.getUrlId();
         CalendarAdapterPort calAdapter = new CalendariCalAdapter();
         return calAdapter.getIcsCalendar(roomLabel, URLid);
     }
 
-    public List<Event> getWeek(Calendar calendar, String roomLabel, LocalDateTime weekStart) {
+    public List<Event> getWeek(String roomLabel, LocalDateTime weekStart) throws ParserException, IOException {
+        Calendar calendar = getCalendar(roomLabel);
         LocalDateTime weekEnd = weekStart.plusWeeks(1);
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss").withZone(ZoneId.of(ZoneId.SHORT_IDS.get("ECT")));
         DateTimeFormatter dateFormatHoliday = DateTimeFormatter.ofPattern("yyyyMMdd").withZone(ZoneId.of(ZoneId.SHORT_IDS.get("ECT")));
@@ -81,8 +81,11 @@ public class CalendarService implements CalendarServicePort {
                 eventTemp.setType("Cours");
                 eventTemp.setStarting_date(eventStart);
                 eventTemp.setEnding_date(eventEnd);
-                eventTemp.setName(event.getProperty("SUMMARY").toString().substring(21));
+                eventTemp.setName(event.getProperty("SUMMARY").toString().substring(20));
                 eventTemp.setStatus(EventStatusEnum.HYPERPLANNING);
+                Collection<Room> room = new ArrayList<>();
+                room.add(RoomRepository.findByLabel(roomLabel));
+                eventTemp.setRoom(room);
 
                 if(event.getProperty("DESCRIPTION") != null) {
                     eventTemp.setDescription(event.getProperty("DESCRIPTION").toString().substring(24));
@@ -91,12 +94,12 @@ public class CalendarService implements CalendarServicePort {
             }
         }
         List<Event> eventFromDatabase = EventRepository.findByRoom_Label(roomLabel);
-        weekEvents.addAll(eventFromDatabase);
-        return weekEvents;
-    }
+        for (Event event: eventFromDatabase) {
+            if(event.getStarting_date().isAfter(weekStart) && event.getStarting_date().isBefore(weekEnd)){
+                weekEvents.add(event);
+            }
+        }
 
-    public void outCalendar(Calendar calendar) throws ParserException, IOException {
-        CalendarAdapterPort calAdapter = new CalendariCalAdapter();
-        calAdapter.outCalendar(calendar);
+        return weekEvents;
     }
 }

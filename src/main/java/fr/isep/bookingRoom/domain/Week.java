@@ -1,17 +1,15 @@
 package fr.isep.bookingRoom.domain;
 
-import java.util.ArrayList;
-import java.util.Date;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
+@Data
+@RequiredArgsConstructor
 public class Week {
-    Date weekStart;
-    Date weekEnd;
+    LocalDateTime weekStart;
+    LocalDateTime weekEnd;
     List<Event> weekEvents;
-
-    public Week(Date weekStart, Date weekEnd, List<Event> weekEvents) {
-        this.weekStart = weekStart;
-        this.weekEnd = weekEnd;
-        this.weekEvents =  weekEvents;
-    }
 }

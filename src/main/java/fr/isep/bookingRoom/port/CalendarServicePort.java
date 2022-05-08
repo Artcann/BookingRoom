@@ -1,10 +1,12 @@
 package fr.isep.bookingRoom.port;
 
+import fr.isep.bookingRoom.domain.Event;
 import net.fortuna.ical4j.data.ParserException;
-import net.fortuna.ical4j.model.Calendar;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.List;
 
 public interface CalendarServicePort {
-    Calendar getCalendar(String roomLabel) throws ParserException, IOException;
+    List<Event> getWeek(String roomLabel, LocalDateTime weekStart) throws ParserException, IOException;
 }
