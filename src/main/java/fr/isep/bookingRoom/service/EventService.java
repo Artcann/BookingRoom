@@ -2,6 +2,7 @@ package fr.isep.bookingRoom.service;
 
 import fr.isep.bookingRoom.domain.Event;
 import fr.isep.bookingRoom.port.EventServicePort;
+import fr.isep.bookingRoom.repository.EventRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -14,14 +15,17 @@ import javax.transaction.Transactional;
 @Transactional
 @Slf4j
 public class EventService implements EventServicePort {
+
+    private final EventRepository eventRepository;
+
     @Override
     public Event saveEvent(Event event) {
-        return null;
+        return eventRepository.save(event);
     }
 
     @Override
     public Event getEventById(String id) {
-        return null;
+        return eventRepository.getById(Long.valueOf(id));
     }
 
     @Override
@@ -31,7 +35,8 @@ public class EventService implements EventServicePort {
 
     @Override
     public void deleteEvent(String id) {
-
+        Event event = eventRepository.getById(Long.valueOf(id));
+        eventRepository.delete(event);
     }
 
     @Override
