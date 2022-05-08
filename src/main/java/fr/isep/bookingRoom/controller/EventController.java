@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/event")
 public class EventController {
-
     private final EventServicePort eventServicePort;
 
     @GetMapping("/all")

@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7a4b034-d174-440b-924c-dbc9ef9213e5" name="Changes" comment="Change name variable">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/service/EventService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/service/RoomService.java" afterDir="false" />
+    <list default="true" id="d7a4b034-d174-440b-924c-dbc9ef9213e5" name="Changes" comment="Adding test script to BookingRoomApplication&#10;&#10;Adding the getWeek function to CalendarService&#10;    This function return the weekly events from hyperplanning and database&#10;&#10;Adjusting Event Object by changing format of start an end, adding a Collection&lt;Room&gt; &#10;&#10;Creating EventRepository that allows us to search events located in a certain room using only the room label as filter&#10;&#10;Adding a status hyperplanning in the EventStatusEnum to dissociate hyperplanning and database events&#10;&#10;Creating Week.java a POJO to better use a list of events&#10;&#10;##################### NOTE ######################&#10;For the database events to work correctly I needed to change the format of starting_date and ending_date from date to timestamp without timezone in pgagent">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Week.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/repository/EventRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/BookingRoomApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/BookingRoomApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/enums/EventStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/domain/enums/EventStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/service/CalendarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/bookingRoom/service/CalendarService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,15 +21,26 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
-        <option value="com.haulmont.jpb.JpaRepository" />
         <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -55,30 +69,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Dev/BookingRoom/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;show.run.dashboard.notification&quot;: &quot;false&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;47fe7cefa9761f76d87f6e4ea4c6a581&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="show.run.dashboard.notification" value="false" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Dev\BookingRoom\src\main\resources" />
@@ -87,17 +90,34 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Dev\BookingRoom\src\main\resources\static" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="fr.isep.bookingRoom.repository" />
+      <recent name="fr.isep.bookingRoom.port" />
+    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.BookingRoomApplication (1)">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BookingRoomApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="BookingRoom" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="fr.isep.bookingRoom.BookingRoomApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="fr.isep.bookingRoom.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="fr.isep.bookingRoom.BookingRoomApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -126,14 +146,11 @@
       <workItem from="1650898565774" duration="4096000" />
       <workItem from="1651073786849" duration="6503000" />
       <workItem from="1651228396352" duration="7013000" />
-      <workItem from="1651401608493" duration="795000" />
-      <workItem from="1651482271342" duration="22000" />
-      <workItem from="1651491365438" duration="11292000" />
-      <workItem from="1651567362223" duration="597000" />
-      <workItem from="1651687051622" duration="1510000" />
-      <workItem from="1651828128472" duration="35000" />
-      <workItem from="1651838863713" duration="1482000" />
-      <workItem from="1651950397077" duration="3157000" />
+      <workItem from="1651491385363" duration="1438000" />
+      <workItem from="1651493234264" duration="16826000" />
+      <workItem from="1651590515311" duration="3568000" />
+      <workItem from="1651651322608" duration="12961000" />
+      <workItem from="1651677049792" duration="13454000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1650901411467</created>
@@ -198,35 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651231612211</updated>
     </task>
-    <task id="LOCAL-00010" summary="Adding Event Controller and Entities">
-      <created>1651401826920</created>
+    <task id="LOCAL-00010" summary="Adding ical4j to dependencies&#10;&#10;Creating CalendariCalAdapter in adapter package&#10;    getCalendar();&#10;    outCalendar(Calendar); (temporary for dev)&#10;&#10;Creating CalendarAdapterPort in port package">
+      <created>1651500024209</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1651401826920</updated>
+      <updated>1651500024209</updated>
     </task>
-    <task id="LOCAL-00011" summary="Adding Room Entity and Repository">
-      <created>1651501185441</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1651501185441</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Adding Event and Room services">
-      <created>1651952357391</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1651952357391</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Change name variable">
-      <created>1651952516067</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1651952516067</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,11 +233,44 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Constant" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="Constant" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/Constant" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
@@ -251,10 +280,8 @@
     <MESSAGE value="Update primary key generation for postgres" />
     <MESSAGE value="Update port for Docker" />
     <MESSAGE value="Adding Swagger" />
-    <MESSAGE value="Adding Event Controller and Entities" />
-    <MESSAGE value="Adding Room Entity and Repository" />
-    <MESSAGE value="Adding Event and Room services" />
-    <MESSAGE value="Change name variable" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change name variable" />
+    <MESSAGE value="Adding ical4j to dependencies&#10;&#10;Creating CalendariCalAdapter in adapter package&#10;    getCalendar();&#10;    outCalendar(Calendar); (temporary for dev)&#10;&#10;Creating CalendarAdapterPort in port package" />
+    <MESSAGE value="Adding test script to BookingRoomApplication&#10;&#10;Adding the getWeek function to CalendarService&#10;    This function return the weekly events from hyperplanning and database&#10;&#10;Adjusting Event Object by changing format of start an end, adding a Collection&lt;Room&gt; &#10;&#10;Creating EventRepository that allows us to search events located in a certain room using only the room label as filter&#10;&#10;Adding a status hyperplanning in the EventStatusEnum to dissociate hyperplanning and database events&#10;&#10;Creating Week.java a POJO to better use a list of events&#10;&#10;##################### NOTE ######################&#10;For the database events to work correctly I needed to change the format of starting_date and ending_date from date to timestamp without timezone in pgagent" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding test script to BookingRoomApplication&#10;&#10;Adding the getWeek function to CalendarService&#10;    This function return the weekly events from hyperplanning and database&#10;&#10;Adjusting Event Object by changing format of start an end, adding a Collection&lt;Room&gt; &#10;&#10;Creating EventRepository that allows us to search events located in a certain room using only the room label as filter&#10;&#10;Adding a status hyperplanning in the EventStatusEnum to dissociate hyperplanning and database events&#10;&#10;Creating Week.java a POJO to better use a list of events&#10;&#10;##################### NOTE ######################&#10;For the database events to work correctly I needed to change the format of starting_date and ending_date from date to timestamp without timezone in pgagent" />
   </component>
 </project>
