@@ -15,7 +15,7 @@ public class SpringFoxConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("fr.isep.bookingRoom.controller"))
+                .apis(RequestHandlerSelectors.basePackage("fr.isep.bookingRoom.application.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
