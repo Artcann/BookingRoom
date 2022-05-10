@@ -6,7 +6,9 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -26,6 +28,10 @@ public class Event {
     @ManyToMany(fetch = FetchType.LAZY)
     @ToString.Exclude
     private Collection<Room> room = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private Collection<EventTranslation> eventTranslations = new HashSet<>();
 
     @Enumerated(EnumType.STRING)
     private EventStatusEnum status;
