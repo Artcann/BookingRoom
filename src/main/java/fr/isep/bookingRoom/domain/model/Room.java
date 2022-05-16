@@ -22,6 +22,8 @@ public class Room {
     @Enumerated(EnumType.STRING)
     private RoomTypeEnum type;
     private String label;
+    private Integer default_room_capacity;
+    private Integer current_current_room;
 
     private String urlId;
 }

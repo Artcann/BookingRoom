@@ -22,8 +22,6 @@ public class Event {
     private Long id;
     private LocalDateTime starting_date;
     private LocalDateTime ending_date;
-    private String name;
-    private String description;
     private String type;
     @ManyToMany(fetch = FetchType.LAZY)
     @ToString.Exclude
@@ -32,6 +30,9 @@ public class Event {
     @OneToMany(fetch = FetchType.LAZY)
     @ToString.Exclude
     private Collection<EventTranslation> eventTranslations = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private Collection<Review> reviews = new HashSet<>();
 
     @Enumerated(EnumType.STRING)
     private EventStatusEnum status;
