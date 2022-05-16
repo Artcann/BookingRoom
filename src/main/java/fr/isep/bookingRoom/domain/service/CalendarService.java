@@ -1,5 +1,6 @@
 package fr.isep.bookingRoom.domain.service;
 
+import fr.isep.bookingRoom.domain.model.EventTranslation;
 import fr.isep.bookingRoom.infrastructure.adapter.CalendariCalAdapter;
 import fr.isep.bookingRoom.domain.model.Event;
 import fr.isep.bookingRoom.domain.model.Room;
@@ -77,19 +78,21 @@ public class CalendarService implements CalendarServicePort {
 
             if(eventStart.isAfter(weekStart) && eventStart.isBefore(weekEnd)){
                 Event eventTemp = new Event();
+                Collection<EventTranslation> translation = eventTemp.getEventTranslations();
 
                 eventTemp.setType("Cours");
                 eventTemp.setStarting_date(eventStart);
                 eventTemp.setEnding_date(eventEnd);
-                eventTemp.setName(event.getProperty("SUMMARY").toString().substring(20));
+                translation.add(EventTranslation.internalBuilder()
+                        .name(event.getProperty("SUMMARY").toString().substring(20))
+                        .description(event.getProperty("DESCRIPTION").toString().substring(24))
+                        .lang("FR")
+                        .build());
                 eventTemp.setStatus(EventStatusEnum.HYPERPLANNING);
                 Collection<Room> room = new ArrayList<>();
                 room.add(RoomRepository.findByLabel(roomLabel));
                 eventTemp.setRoom(room);
 
-                if(event.getProperty("DESCRIPTION") != null) {
-                    eventTemp.setDescription(event.getProperty("DESCRIPTION").toString().substring(24));
-                }
                 weekEvents.add(eventTemp);
             }
         }

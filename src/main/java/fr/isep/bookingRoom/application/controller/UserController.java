@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.isep.bookingRoom.application.DTO.AddRoleToUserDTO;
 import fr.isep.bookingRoom.domain.model.Role;
 import fr.isep.bookingRoom.domain.model.Userdata;
 import fr.isep.bookingRoom.application.port.UserServicePort;
@@ -57,7 +58,7 @@ public class UserController {
 
     @RolesAllowed("ROLE_ADMIN")
     @PostMapping("/role/addtouser")
-    public ResponseEntity<Void> saveRoleToUser(@RequestBody RoleToUserForm form) {
+    public ResponseEntity<Void> saveRoleToUser(@RequestBody AddRoleToUserDTO form) {
         userServicePort.addRoleToUser(form.getUsername(), form.getRolename());
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -102,11 +103,4 @@ public class UserController {
             throw new RuntimeException("Refresh token is missing");
         }
     }
-}
-//TODO Transformer en DTO
-
-@Data
-class RoleToUserForm {
-    private String username;
-    private String rolename;
 }

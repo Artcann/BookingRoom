@@ -14,6 +14,7 @@ import java.util.Objects;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder(builderMethodName = "internalBuilder")
 public class EventTranslation {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
