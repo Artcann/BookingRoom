@@ -1,7 +1,6 @@
 package fr.isep.bookingRoom.domain.service;
 
 import fr.isep.bookingRoom.application.port.EventTranslationServicePort;
-import fr.isep.bookingRoom.domain.model.Event;
 import fr.isep.bookingRoom.domain.model.EventTranslation;
 import fr.isep.bookingRoom.infrastructure.repository.EventTranslationRepository;
 import lombok.RequiredArgsConstructor;
