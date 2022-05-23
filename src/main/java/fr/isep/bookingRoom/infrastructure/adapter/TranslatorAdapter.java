@@ -15,7 +15,7 @@ import java.util.Map;
 public class TranslatorAdapter implements TranslatorAdapterPort {
     @Value("${DEEPL_API_URL}")
     private String deeplUrl;
-    @Value("${DEEPL_AUTHENTIFICATION}")
+    @Value("${DEEPL_AUTHENTIFICATION_KEY}")
     private String auth_key;
 
     public String translate(String languageTo, String text) throws IOException{

@@ -62,6 +62,7 @@ public class UserService implements UserServicePort, UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Userdata user = userRepository.findByEmail(username);
+        log.info(user.getPassword());
         if(null == user) {
             log.error("User not found in the database");
             throw new UsernameNotFoundException("User not found in the database");
@@ -69,9 +70,7 @@ public class UserService implements UserServicePort, UserDetailsService {
             log.info("User found in the database: {}", username);
         }
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        user.getRoles().forEach(role -> {
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
-        });
+        user.getRoles().forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getName())));
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
     }
 }

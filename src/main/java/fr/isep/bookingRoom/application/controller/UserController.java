@@ -44,7 +44,6 @@ public class UserController {
         return new ResponseEntity<>(userServicePort.getUsers(), HttpStatus.OK);
     }
 
-    @RolesAllowed("ROLE_ADMIN")
     @PostMapping("/save")
     public ResponseEntity<Userdata> saveUser(@RequestBody Userdata user) {
         return new ResponseEntity<>(userServicePort.saveUser(user), HttpStatus.CREATED);

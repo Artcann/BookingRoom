@@ -4,6 +4,8 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -42,9 +44,19 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        //TODO read Basic Auth headers
-        String username = request.getParameter("login");
-        String password = request.getParameter("password");
+        JSONObject json;
+
+        try {
+            JSONTokener tokener = new JSONTokener(request.getReader());
+            json = new JSONObject(tokener);
+        } catch (IOException e) {
+            throw new AuthenticationException("Cannot read buffer of request") {
+            };
+        }
+        String username = json.get("login").toString();
+        String password = json.get("password").toString();
+        //String username = request.getParameter("login");
+        //String password = request.getParameter("password");
 
 
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
