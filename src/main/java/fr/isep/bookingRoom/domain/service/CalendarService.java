@@ -10,6 +10,7 @@ import fr.isep.bookingRoom.application.port.CalendarServicePort;
 import fr.isep.bookingRoom.infrastructure.repository.EventRepository;
 import fr.isep.bookingRoom.infrastructure.repository.RoomRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import net.fortuna.ical4j.data.ParserException;
 import net.fortuna.ical4j.model.Calendar;
 import net.fortuna.ical4j.model.Component;
@@ -30,6 +31,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CalendarService implements CalendarServicePort {
     private final RoomRepository RoomRepository;
     private final EventRepository EventRepository;
@@ -83,11 +85,23 @@ public class CalendarService implements CalendarServicePort {
                 eventTemp.setType("Cours");
                 eventTemp.setStarting_date(eventStart);
                 eventTemp.setEnding_date(eventEnd);
-                translation.add(EventTranslation.internalBuilder()
-                        .name(event.getProperty("SUMMARY").toString().substring(20))
-                        .description(event.getProperty("DESCRIPTION").toString().substring(24))
-                        .lang("FR")
-                        .build());
+
+                if(String.valueOf(event.getProperty("DESCRIPTION")).length() > 4) {
+                    translation.add(EventTranslation.internalBuilder()
+                            .name(String.valueOf(event.getProperty("SUMMARY")).substring(20))
+                            .description(String.valueOf(event.getProperty("DESCRIPTION")).substring(24))
+                            .lang("FR")
+                            .build());
+                } else {
+                    translation.add(EventTranslation.internalBuilder()
+                            .name(String.valueOf(event.getProperty("SUMMARY")).substring(20))
+                            .description("Férié")
+                            .lang("FR")
+                            .build());
+                }
+
+
+
                 eventTemp.setStatus(EventStatusEnum.HYPERPLANNING);
                 Collection<Room> room = new ArrayList<>();
                 room.add(RoomRepository.findByLabel(roomLabel));

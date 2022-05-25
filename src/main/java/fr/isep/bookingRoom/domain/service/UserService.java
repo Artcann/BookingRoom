@@ -4,6 +4,7 @@ package fr.isep.bookingRoom.domain.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -55,6 +56,13 @@ public class UserService implements UserServicePort, UserDetailsService {
     }
 
     @Override
+    public Userdata getProfile() {
+        return userRepository.findByEmail(SecurityContextHolder.getContext()
+                .getAuthentication()
+                .getPrincipal().toString());
+    }
+
+    @Override
     public List<Userdata> getUsers() {
         return userRepository.findAll();
     }
@@ -62,7 +70,6 @@ public class UserService implements UserServicePort, UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Userdata user = userRepository.findByEmail(username);
-        log.info(user.getPassword());
         if(null == user) {
             log.error("User not found in the database");
             throw new UsernameNotFoundException("User not found in the database");

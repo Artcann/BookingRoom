@@ -9,6 +9,7 @@ public interface UserServicePort {
     Role saveRole(Role role);
     void addRoleToUser(String username, String roleName);
     Userdata getUser(String username);
+    Userdata getProfile();
 
     //Utiliser Page ici
     List<Userdata> getUsers();

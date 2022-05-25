@@ -1,5 +1,6 @@
 package fr.isep.bookingRoom.domain.model;
 
+import fr.isep.bookingRoom.domain.model.enums.PromoEnum;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -25,6 +26,10 @@ public class Userdata {
     private Integer studentId;
     private String firstName;
     private String lastName;
+    @Enumerated(EnumType.STRING)
+    private PromoEnum promo;
+
+    private String association;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @ToString.Exclude

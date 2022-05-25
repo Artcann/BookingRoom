@@ -44,9 +44,16 @@ public class UserController {
         return new ResponseEntity<>(userServicePort.getUsers(), HttpStatus.OK);
     }
 
+    @GetMapping("/me")
+    public ResponseEntity<Userdata> getProfile() {
+        return new ResponseEntity<>(userServicePort.getProfile(), HttpStatus.OK);
+    }
+
     @PostMapping("/save")
     public ResponseEntity<Userdata> saveUser(@RequestBody Userdata user) {
-        return new ResponseEntity<>(userServicePort.saveUser(user), HttpStatus.CREATED);
+        Userdata savedUser = userServicePort.saveUser(user);
+        this.userServicePort.addRoleToUser(savedUser.getEmail(), "USER");
+        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
     @RolesAllowed("ROLE_ADMIN")
@@ -79,7 +86,7 @@ public class UserController {
                         .withSubject(user.getEmail())
                         .withExpiresAt(new Date(System.currentTimeMillis() + 10 * 60 * 1000))
                         .withIssuer(request.getRequestURI())
-                        .withClaim("roles", user.getRoles().stream().map(Role::getName).collect(Collectors.toList()))
+                        .withClaim("roles", user.getRoles().stream().map(Role::getName).toList())
                         .sign(algorithm);
 
                 Map<String, String> tokens = new HashMap<>();
