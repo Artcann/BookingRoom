@@ -1,8 +1,10 @@
 package fr.isep.bookingRoom.domain.model;
 
 import fr.isep.bookingRoom.domain.model.enums.EventStatusEnum;
+import fr.isep.bookingRoom.domain.model.enums.EventTypeEnum;
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -20,14 +22,17 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    @Column(name = "starting_date", columnDefinition= "TIMESTAMP WITH TIME ZONE")
     private LocalDateTime starting_date;
+    @Column(name = "ending_date", columnDefinition= "TIMESTAMP WITH TIME ZONE")
     private LocalDateTime ending_date;
-    private String type;
     @ManyToMany(fetch = FetchType.LAZY)
     @ToString.Exclude
     private Collection<Room> room = new HashSet<>();
 
-    @OneToMany(fetch = FetchType.LAZY)
+
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @ToString.Exclude
     private Collection<EventTranslation> eventTranslations = new HashSet<>();
 
@@ -36,6 +41,12 @@ public class Event {
 
     @Enumerated(EnumType.STRING)
     private EventStatusEnum status;
+
+    @Enumerated(EnumType.STRING)
+    private EventTypeEnum type;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH}, optional = false, fetch = FetchType.LAZY)
+    private Userdata user;
 
     @Override
     public boolean equals(Object o) {

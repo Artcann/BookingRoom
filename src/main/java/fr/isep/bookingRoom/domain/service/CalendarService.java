@@ -1,6 +1,7 @@
 package fr.isep.bookingRoom.domain.service;
 
 import fr.isep.bookingRoom.domain.model.EventTranslation;
+import fr.isep.bookingRoom.domain.model.enums.EventTypeEnum;
 import fr.isep.bookingRoom.infrastructure.adapter.CalendariCalAdapter;
 import fr.isep.bookingRoom.domain.model.Event;
 import fr.isep.bookingRoom.domain.model.Room;
@@ -34,7 +35,7 @@ import java.util.List;
 @Slf4j
 public class CalendarService implements CalendarServicePort {
     private final RoomRepository RoomRepository;
-    private final EventRepository EventRepository;
+    private final EventRepository eventRepository;
 
     private Calendar getCalendar(String roomLabel) throws ParserException, IOException {
         Room room = RoomRepository.findByLabel(roomLabel);
@@ -82,14 +83,15 @@ public class CalendarService implements CalendarServicePort {
                 Event eventTemp = new Event();
                 Collection<EventTranslation> translation = eventTemp.getEventTranslations();
 
-                eventTemp.setType("Cours");
+                eventTemp.setType(EventTypeEnum.HYPERPLANNING);
                 eventTemp.setStarting_date(eventStart);
                 eventTemp.setEnding_date(eventEnd);
 
                 if(String.valueOf(event.getProperty("DESCRIPTION")).length() > 4) {
+
                     translation.add(EventTranslation.internalBuilder()
                             .name(String.valueOf(event.getProperty("SUMMARY")).substring(20))
-                            .description(String.valueOf(event.getProperty("DESCRIPTION")).substring(24))
+                            .description(event.getProperty("DESCRIPTION").getValue())
                             .lang("FR")
                             .build());
                 } else {
@@ -102,7 +104,6 @@ public class CalendarService implements CalendarServicePort {
 
 
 
-                eventTemp.setStatus(EventStatusEnum.HYPERPLANNING);
                 Collection<Room> room = new ArrayList<>();
                 room.add(RoomRepository.findByLabel(roomLabel));
                 eventTemp.setRoom(room);
@@ -110,9 +111,10 @@ public class CalendarService implements CalendarServicePort {
                 weekEvents.add(eventTemp);
             }
         }
-        List<Event> eventFromDatabase = EventRepository.findByRoom_Label(roomLabel);
+        List<Event> eventFromDatabase = eventRepository.findByRoom_Label(roomLabel);
         for (Event event: eventFromDatabase) {
-            if(event.getStarting_date().isAfter(weekStart) && event.getStarting_date().isBefore(weekEnd)){
+            if((event.getStarting_date().isAfter(weekStart) || event.getStarting_date().isEqual(weekStart)) && event.getStarting_date().isBefore(weekEnd)){
+                event.setUser(null);
                 weekEvents.add(event);
             }
         }

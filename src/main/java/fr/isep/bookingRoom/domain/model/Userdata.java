@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
@@ -35,9 +36,8 @@ public class Userdata {
     @ToString.Exclude
     private Collection<Role> roles = new HashSet<>();
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @ToString.Exclude
-    private Collection<Event> events = new HashSet<>();
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    private Collection<Event> events = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {

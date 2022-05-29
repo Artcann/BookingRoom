@@ -57,9 +57,11 @@ public class UserService implements UserServicePort, UserDetailsService {
 
     @Override
     public Userdata getProfile() {
-        return userRepository.findByEmail(SecurityContextHolder.getContext()
+        Userdata user = userRepository.findByEmail(SecurityContextHolder.getContext()
                 .getAuthentication()
                 .getPrincipal().toString());
+        user.setEvents(null);
+        return user;
     }
 
     @Override

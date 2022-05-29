@@ -4,8 +4,7 @@ public enum EventStatusEnum {
     SUBMITED("submited"),
     IN_REVIEW("in_review"),
     ACCEPTED("accepted"),
-    REFUSED("refused"),
-    HYPERPLANNING("hyperplanning");
+    REFUSED("refused");
 
     public final String label;
 
