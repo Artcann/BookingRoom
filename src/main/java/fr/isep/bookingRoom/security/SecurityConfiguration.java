@@ -40,7 +40,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/v2/api-docs",
             "/webjars/**",
             "/swagger-ui/**",
-            "/api-spec.yaml"
+            "/api-spec.yaml",
+            "/calendar/**"
     };
 
     @Override
